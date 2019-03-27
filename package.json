@@ -1,0 +1,13 @@
+{
+  "name": "proto-bot",
+  "version": "0.0.1",
+  "description": "Prototype bot",
+  "main": "bot.js",
+  "author": "nkzren",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "discord.js": "^11.4.2",
+    "klaw": "^3.0.0",
+    "moment": "^2.24.0"
+  }
+}
