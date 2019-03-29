@@ -38,9 +38,13 @@ module.exports = class {
     const commandFn = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 
     if (!commandFn) return;
-
-    // TODO Implementar niveis de permissao e adicionar no terceiro parametro
-    commandFn.run(message, args);
+    
+    const requiredLevel = this.client.permissionLevels.find((role) => role.name === commandFn.options.permissionLevel).level;
+    if (!requiredLevel || this.client.checkMemberLevel(message) >= requiredLevel) {
+      commandFn.run(message, args);
+    } else {
+      message.reply(`_You don't have the permissions required to run the command _\`${commandFn.name}\`_. Permission Level: _\`${commandFn.options.permissionLevel}\``);
+    }
 
   }
 }

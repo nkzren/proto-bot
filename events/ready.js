@@ -10,7 +10,6 @@ module.exports = class {
    */
   async run() {
     // Await para esperar as infos das guildas do client (as vezes vem antes do 'ready')
-
     await setTimeout(() => console.log("Waiting for data..."), 1000);
 
     //Atualiza as infos do bot periodicamente

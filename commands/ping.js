@@ -13,7 +13,8 @@ class Ping extends Command {
       description: "Test bot latency. The Hello World! of commands",
       enabled: true,
       usage: "ping",
-      aliases: ["pong"]
+      aliases: ["pong"],
+      permissionLevel: "User",
     });
   }
 

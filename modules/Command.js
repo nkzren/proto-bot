@@ -10,7 +10,7 @@ class Command {
     usage = "No usage provided",
     enabled = false,
     aliases = [],
-    permissionLevel = "0",
+    permissionLevel = "User",
   }) {
     this.name = name;
     this.client = client;

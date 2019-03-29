@@ -24,7 +24,21 @@ class ProtoBot extends Client {
     // Creates the Collection objects for the commands and the aliases
     this.commands = new Collection();
     this.aliases = new Collection();
+    this.permissionLevels = require('./modules/Permissions')
 
+  }
+
+  checkMemberLevel(message) {
+    let permLevel = 0;
+    const permissionLevels = require('./modules/Permissions').sort((a, b) => a.level - b.level);
+    while (permissionLevels.length) {
+      const permission = permissionLevels.pop();
+      if (message.guild && permission.check(message)) {
+        permLevel = permission.level;
+        break;
+      }
+    }
+    return permLevel;
   }
 
   /**
@@ -111,7 +125,7 @@ function loadCommands() {
 
 /**
 * Reads the entire ./events folder and sets the event function.
-* Event modules constructor MUST have a name property with the exact name of the event
+* Event modules constructor MUST have a 'name' property with the exact name of the event
 */
 async function loadEvents() {
   const eventFiles = await readdir('./events/');
