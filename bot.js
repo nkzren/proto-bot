@@ -98,7 +98,7 @@ const init = async () => {
   loadCommands();
   await loadEvents();
 
-  client.login(client.config.token);
+  client.login(require('./token.json').token);
 }
 
 init();
@@ -124,9 +124,9 @@ function loadCommands() {
 }
 
 /**
-* Reads the entire ./events folder and sets the event function.
-* Event modules constructor MUST have a 'name' property with the exact name of the event
-*/
+ * Reads the entire ./events folder and sets the event function.
+ * Event modules constructor MUST have a 'name' property with the exact name of the event
+ */
 async function loadEvents() {
   const eventFiles = await readdir('./events/');
   client.logger.log(`Events loaded: ${eventFiles.length}`);
