@@ -4,6 +4,9 @@
   "description": "Prototype bot",
   "main": "bot.js",
   "author": "nkzren",
+  "scripts": {
+    "start": "node bot"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "discord.js": "^11.4.2",
